@@ -5,72 +5,37 @@ const expect = require('chai').expect;
 const adder = require('../fizzBuzzer');
 
 // unit tests for our `adder` function
-describe('fizz-buzzer', function() {
-  it('should raise error if arg not number', function() {
-    // range of bad inputs where not both are numbers
-    const badInputs = [
-      ['string'],
-      [NaN],
-      [false]
-    ];
-    // prove that an error is raised for bad inputs
+describe('fizzBuzzer', function() {
+it('should return "fizz-buzz" for multiples of 15', function() {
+    [15, 30, 45].forEach(function(input) {
+      expect(fizzBuzzer(input)).to.equal('fizz-buzz');
+    });
+  });
+
+  it('should return "fizz" for multiples of 3', function() {
+    [3, 6, 9, 12].forEach(function(input) {
+      expect(fizzBuzzer(input)).to.equal('fizz');
+    });
+  });
+
+  it('should return "buzz" for multiples of 5', function() {
+    [5, 10, 20].forEach(function(input) {
+      expect(fizzBuzzer(input)).to.equal('buzz');
+    });
+  });
+
+  it('should return number if not mult of 3 or 5', function() {
+    [1, 2, 4, 7].forEach(function(input) {
+      expect(fizzBuzzer(input)).to.equal(input);
+    });
+  });
+
+  it('should produce error if input isn\'t number', function() {
+    const badInputs = [true, false, 'cat', function() {}, [1, 2, 3]];
     badInputs.forEach(function(input) {
       expect(function() {
-        fizzBuzzer(input[0]);
+          fizzBuzzer(input);
       }).to.throw(Error);
-    });
-  });
-  it('if number is divisible by 3 and 5 should return fizz-buzz', function() {
-        // notable cases like negative answers
-    const normalCases = [
-      {a: 15, expected: 'fizz-buzz'},
-      {a: 30, expected: 'fizz-buzz'},
-      {a: 90, expected: 'fizz-buzz'}
-    ];
-    // for each set of inputs (a, b), `adder` should
-    // produce the expected value
-    normalCases.forEach(function(input) {
-      const answer = adder(input.a);
-      expect(answer).to.equal(input.expected);
-    });
-  });
-  it('if number is divisible by 5 should return buzz', function() {
-        const normalCases = [
-      {a: 25, expected: 'buzz'},
-      {a: 95, expected: 'buzz'},
-      {a: 10, expected: 'buzz'}
-    ];
-    // for each set of inputs (a, b), `adder` should
-    // produce the expected value
-    normalCases.forEach(function(input) {
-      const answer = adder(input.a);
-      expect(answer).to.equal(input.expected);
-    });
-  });
-  it('if number is divisible by 3 should return fizz', function() {
-        const normalCases = [
-      {a: 3, expected: 'fizz'},
-      {a: 33, expected: 'fizz'},
-      {a: 99, expected: 'fizz'}
-    ];
-    // for each set of inputs (a, b), `adder` should
-    // produce the expected value
-    normalCases.forEach(function(input) {
-      const answer = adder(input.a);
-      expect(answer).to.equal(input.expected);
-    });
-  });
-  it('otherwise should return number', function() {
-        const normalCases = [
-      {a: 11, expected: 11},
-      {a: 26, expected: 26},
-      {a: 2, expected: 2}
-    ];
-    // for each set of inputs (a, b), `adder` should
-    // produce the expected value
-    normalCases.forEach(function(input) {
-      const answer = adder(input.a);
-      expect(answer).to.equal(input.expected);
     });
   });
 });
