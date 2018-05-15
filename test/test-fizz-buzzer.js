@@ -1,12 +1,10 @@
-// import chai, declare expect variable
 const expect = require('chai').expect;
 
-// import adder
-const adder = require('../fizzBuzzer');
+const fizzBuzzer = require('../fizzBuzzer');
 
-// unit tests for our `adder` function
 describe('fizzBuzzer', function() {
-it('should return "fizz-buzz" for multiples of 15', function() {
+
+  it('should return "fizz-buzz" for multiples of 15', function() {
     [15, 30, 45].forEach(function(input) {
       expect(fizzBuzzer(input)).to.equal('fizz-buzz');
     });
@@ -39,20 +37,3 @@ it('should return "fizz-buzz" for multiples of 15', function() {
     });
   });
 });
-
-
-  // if (typeof num !== 'number') {
-  //   throw Error('`num` must be a number');
-  // }
-  // if (num % 15 === 0) {
-  //   return 'fizz-buzz';
-  // }
-  // if (num % 5 === 0) {
-  //   return 'buzz';
-  // }
-  // if (num % 3 === 0) {
-  //   return 'fizz';
-  // }
-  // else {
-  //   return num;
-  // }
